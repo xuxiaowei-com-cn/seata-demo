@@ -75,6 +75,12 @@ spring:
             # 连接池最大连接数
             maximum-pool-size: 10
             connection-test-query: select 1 * 1
+  # 微服务
+  cloud:
+    loadbalancer:
+      ribbon:
+        # 禁用 ribbon
+        enabled: false
 #
 # MyBatis Plus 配置
 mybatis-plus:
