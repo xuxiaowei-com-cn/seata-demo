@@ -27,7 +27,7 @@ spring:
         server-addr: 192.168.5.3:8848
         # 命名空间
         namespace: public
-        # 原数据
+        # 元数据
         metadata:
           # 快速上线
           preserved.heart.beat.interval: 1000
