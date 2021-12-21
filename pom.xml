@@ -25,6 +25,10 @@
         <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-alibaba-dependencies -->
         <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
 
+
+        <!-- 打包时跳过单元测试 -->
+        <skipTests>true</skipTests>
+
     </properties>
 
     <modules>
