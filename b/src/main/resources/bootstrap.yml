@@ -81,6 +81,13 @@ spring:
       ribbon:
         # 禁用 ribbon
         enabled: false
+    nacos:
+      discovery:
+        metadata:
+          # 快速上线
+          preserved.heart.beat.interval: 1000
+          preserved.heart.beat.timeout: 3000
+          preserved.ip.delete.timeout: 3000
 #
 # MyBatis Plus 配置
 mybatis-plus:
