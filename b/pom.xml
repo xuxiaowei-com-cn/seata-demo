@@ -112,6 +112,15 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <!-- 打包为 Spring Boot jar -->
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
