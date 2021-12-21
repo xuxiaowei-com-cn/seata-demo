@@ -47,7 +47,7 @@ public class AHystrixService {
      * @throws ParamException 异常
      */
     public Map<String, Object> saveFallback(SaveDTO saveDTO, Throwable e) throws ParamException {
-        throw new ParamException("B001", "A 服务故障：" + e.getMessage(), null);
+        throw new ParamException("A001", "A 服务故障：" + e.getMessage(), null);
     }
 
 }
