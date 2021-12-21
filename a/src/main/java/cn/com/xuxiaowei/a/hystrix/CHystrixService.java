@@ -47,7 +47,7 @@ public class CHystrixService {
      * @throws ParamException 异常
      */
     public Map<String, Object> saveFallback(SaveDTO saveDTO, Throwable e) throws ParamException {
-        throw new ParamException("B001", "C 服务故障：" + e.getMessage(), null);
+        throw new ParamException("C001", "C 服务故障：" + e.getMessage(), null);
     }
 
 }
