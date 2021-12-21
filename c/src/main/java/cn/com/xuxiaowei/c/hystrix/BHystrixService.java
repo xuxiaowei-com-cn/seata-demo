@@ -1,13 +1,13 @@
 package cn.com.xuxiaowei.c.hystrix;
 
 import cn.com.xuxiaowei.c.dto.SaveDTO;
+import cn.com.xuxiaowei.c.exception.ParamException;
 import cn.com.xuxiaowei.c.feign.BFeignService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -42,12 +42,12 @@ public class BHystrixService {
      * 保存 异常数据
      *
      * @param saveDTO 保存数据
+     * @param e       异常
      * @return 返回 异常 结果
+     * @throws ParamException 异常
      */
-    public Map<String, Object> saveFallback(SaveDTO saveDTO) {
-        Map<String, Object> map = new HashMap<>(4);
-        map.put("msg", "B 服务故障");
-        return map;
+    public Map<String, Object> saveFallback(SaveDTO saveDTO, Throwable e) throws ParamException {
+        throw new ParamException("B001", "B 服务故障：" + e.getMessage(), null);
     }
 
 }
