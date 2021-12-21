@@ -47,6 +47,12 @@ spring:
 # Spring Boot 配置
 #
 spring:
+  # 微服务
+  cloud:
+    loadbalancer:
+      ribbon:
+        # 禁用 ribbon
+        enabled: false
   #
   # 数据库 配置
   datasource:
@@ -63,6 +69,10 @@ spring:
       strict: true
       # 设置默认的数据源或者数据源组,默认值即为master,如果你主从默认下主库的名称就是master可不定义此项。
       primary: master
+      # 开启 seata 代理，开启后默认每个数据源都代理，如果某个不需要代理可单独关闭
+      seata: true
+      # 支持XA及AT模式,默认AT
+      seata-mode: AT
       # 数据源
       datasource:
         # HIS 主数据源（主数据源）
@@ -106,6 +116,34 @@ mybatis-plus:
   configuration:
     # 缓存
     cache-enabled: true
+#
+# seata-配置
+seata:
+  # 关闭自动代理
+  # https://dynamic-datasource.com/guide/tx/Seata.html#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9
+  enable-auto-data-source-proxy: false
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: seata_demo_group
+  service:
+    vgroup-mapping:
+      seata_demo_group: default #key与上面的tx-service-group的值对应
+    grouplist:
+      seata: seata-server # 服务名
+  config:
+    type: file
+  registry:
+    type: Nacos
+#
+# Hystrix-配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          # RequestContextHolder.getRequestAttributes() 不为空
+          # RootContext.getXID() 不为空
+          strategy: SEMAPHORE
 #
 # 日志配置
 logging:

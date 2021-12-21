@@ -3,6 +3,7 @@ package cn.com.xuxiaowei.b.controller;
 import cn.com.xuxiaowei.b.dto.SaveDTO;
 import cn.com.xuxiaowei.b.entity.B;
 import cn.com.xuxiaowei.b.service.IBService;
+import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,6 +34,8 @@ public class SaveRestController {
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Map<String, Object> save(@RequestBody SaveDTO saveDTO) {
         Map<String, Object> map = new HashMap<>(4);
+
+        log.info("当前 XID: {}", RootContext.getXID());
 
         B b = new B();
         b.setNum(10 / saveDTO.getBNum());

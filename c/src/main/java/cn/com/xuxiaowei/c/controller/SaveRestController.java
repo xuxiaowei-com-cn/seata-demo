@@ -3,6 +3,7 @@ package cn.com.xuxiaowei.c.controller;
 import cn.com.xuxiaowei.c.dto.SaveDTO;
 import cn.com.xuxiaowei.c.entity.C;
 import cn.com.xuxiaowei.c.service.ICService;
+import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,6 +34,8 @@ public class SaveRestController {
     @RequestMapping("/save")
     public Map<String, Object> save(@RequestBody SaveDTO saveDTO) {
         Map<String, Object> map = new HashMap<>(4);
+
+        log.info("当前 XID: {}", RootContext.getXID());
 
         C c = new C();
         c.setNum(10 / saveDTO.getCNum());

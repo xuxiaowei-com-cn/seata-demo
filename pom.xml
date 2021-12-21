@@ -47,6 +47,11 @@
         <spring-cloud-starter-hystrix.version>1.4.7.RELEASE</spring-cloud-starter-hystrix.version>
 
 
+        <!-- 分布式事务 -->
+        <!-- https://mvnrepository.com/artifact/io.seata/seata-spring-boot-starter -->
+        <seata-spring-boot-starter.version>1.4.2</seata-spring-boot-starter.version>
+
+
         <!-- 打包时跳过单元测试 -->
         <skipTests>true</skipTests>
 
@@ -123,6 +128,20 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix</artifactId>
             <version>${spring-cloud-starter-hystrix.version}</version>
+        </dependency>
+
+
+        <!-- 分布式事务 -->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>${seata-spring-boot-starter.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>druid</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 
