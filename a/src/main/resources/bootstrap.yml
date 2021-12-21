@@ -27,6 +27,12 @@ spring:
         server-addr: 192.168.5.3:8848
         # 命名空间
         namespace: public
+        # 元数据
+        metadata:
+          # 快速上线
+          preserved.heart.beat.interval: 1000
+          preserved.heart.beat.timeout: 3000
+          preserved.ip.delete.timeout: 3000
       # 服务配置
       config:
         # 命名空间
