@@ -42,6 +42,11 @@
         <p6spy.version>3.9.1</p6spy.version>
 
 
+        <!-- 服务间调用 -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-hystrix -->
+        <spring-cloud-starter-hystrix.version>1.4.7.RELEASE</spring-cloud-starter-hystrix.version>
+
+
         <!-- 打包时跳过单元测试 -->
         <skipTests>true</skipTests>
 
@@ -102,6 +107,22 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${mybatis-plus-generator.version}</version>
             <scope>test</scope>
+        </dependency>
+
+
+        <!-- 服务间调用 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <version>${spring-cloud-starter-hystrix.version}</version>
         </dependency>
 
 
