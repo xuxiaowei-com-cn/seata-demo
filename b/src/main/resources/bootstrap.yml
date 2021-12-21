@@ -1,0 +1,58 @@
+#
+# 服务器配置
+server:
+  # 端口
+  port: 802
+#
+# Spring Boot 配置
+#
+spring:
+  #
+  application:
+    # 注册的服务名
+    name: b
+  #
+  # Cloud 配置
+  cloud:
+    inetutils:
+      # 将被忽略的网络接口的 Java 正则表达式列表。
+      ignored-interfaces:
+        # 正则表达式，忽略 VMware 虚拟机网卡
+        - VMware.*
+        - VirtualBox.*
+    nacos:
+      # 服务注册
+      discovery:
+        # 服务注册地址
+        server-addr: 192.168.5.3:8848
+        # 命名空间
+        namespace: public
+        # 原数据
+        metadata:
+          # 快速上线
+          preserved.heart.beat.interval: 1000
+          preserved.heart.beat.timeout: 3000
+          preserved.ip.delete.timeout: 3000
+      # 服务配置
+      config:
+        # 命名空间
+        namespace: public
+        file-extension: yml
+        server-addr: 192.168.5.3:8848
+#
+# 日志配置
+logging:
+  level:
+    web: debug
+    cn.com.xuxiaowei: debug
+  file:
+    # 文件名及路径
+    name: /logs/${spring.application.name}/${spring.application.name}.log
+    # 文件最大大小,单位: org.springframework.util.unit.DataSize
+    max-size: 20MB
+    #日志保存天数
+    max-history: 365
+  # 格式
+  pattern:
+    # 压缩文件命名
+    rolling-file-name: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log.gz"
