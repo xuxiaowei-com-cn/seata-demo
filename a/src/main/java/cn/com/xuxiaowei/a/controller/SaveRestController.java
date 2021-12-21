@@ -4,6 +4,8 @@ import cn.com.xuxiaowei.a.dto.SaveDTO;
 import cn.com.xuxiaowei.a.entity.A;
 import cn.com.xuxiaowei.a.service.IAService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,7 @@ public class SaveRestController {
     }
 
     @RequestMapping("/save")
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Map<String, Object> save(@RequestBody SaveDTO saveDTO) {
         Map<String, Object> map = new HashMap<>(4);
 
