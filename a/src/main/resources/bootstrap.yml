@@ -110,6 +110,7 @@ mybatis-plus:
 logging:
   level:
     web: debug
+    cn.com.xuxiaowei: debug
   file:
     # 文件名及路径
     name: /logs/${spring.application.name}/${spring.application.name}.log
