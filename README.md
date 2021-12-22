@@ -23,3 +23,32 @@
     - 1.4.2
 - 说明
     - [配置修改](./seata)
+
+## 测试
+
+- 正常
+    - http://localhost:801/b/save
+      ``` json
+      {
+          "a": "A",
+          "anum": 1,
+          "b": "B",
+          "bnum": 1,
+          "c": "C",
+          "cnum": 1
+      }
+      ```
+
+- 分布式事务
+    - http://localhost:801/b/save
+
+        ```
+        {
+            "a": "A",
+            "anum": 1,
+            "b": "B",
+            "bnum": 1,
+            "c": "C",
+            "cnum": 0
+        }
+        ```
