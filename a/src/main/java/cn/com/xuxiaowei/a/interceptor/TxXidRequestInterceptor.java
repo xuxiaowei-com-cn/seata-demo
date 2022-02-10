@@ -2,9 +2,7 @@ package cn.com.xuxiaowei.a.interceptor;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * 发送至服务时，携带 XID header
@@ -22,11 +20,6 @@ public class TxXidRequestInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate template) {
 
-        // 分布式事务传递 TX_XID
-        String xid = RootContext.getXID();
-        if (StringUtils.isNotEmpty(xid)) {
-            template.header(RootContext.KEY_XID, xid);
-        }
 
     }
 

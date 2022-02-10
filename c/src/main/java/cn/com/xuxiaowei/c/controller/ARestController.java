@@ -3,7 +3,6 @@ package cn.com.xuxiaowei.c.controller;
 import cn.com.xuxiaowei.c.dto.SaveDTO;
 import cn.com.xuxiaowei.c.hystrix.AHystrixService;
 import cn.com.xuxiaowei.c.hystrix.BHystrixService;
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +30,6 @@ public class ARestController {
         this.bHystrixService = bHystrixService;
     }
 
-    @GlobalTransactional
     @Transactional(rollbackFor = Exception.class)
     @RequestMapping("/save")
     public Map<String, Object> save(@RequestBody SaveDTO saveDTO) {
