@@ -39,10 +39,10 @@ public class BRestController {
 
 
         Map<String, Object> bSave = bHystrixService.save(saveDTO);
-//        Map<String, Object> cSave = cHystrixService.save(saveDTO);
+        Map<String, Object> cSave = cHystrixService.save(saveDTO);
 
         map.put("bSave", bSave);
-//        map.put("cSave", cSave);
+        map.put("cSave", cSave);
 
         return map;
     }
