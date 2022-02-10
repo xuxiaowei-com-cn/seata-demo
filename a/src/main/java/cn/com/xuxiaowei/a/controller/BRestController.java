@@ -43,10 +43,10 @@ public class BRestController {
         log.info("当前 XID: {}", RootContext.getXID());
 
         Map<String, Object> bSave = bHystrixService.save(saveDTO);
-        Map<String, Object> cSave = cHystrixService.save(saveDTO);
+//        Map<String, Object> cSave = cHystrixService.save(saveDTO);
 
         map.put("bSave", bSave);
-        map.put("cSave", cSave);
+//        map.put("cSave", cSave);
 
         return map;
     }

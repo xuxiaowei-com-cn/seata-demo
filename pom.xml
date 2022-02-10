@@ -65,6 +65,11 @@
 
     <dependencies>
 
+        <!-- 日志治理 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
 
         <!-- 微服务基础依赖 -->
         <dependency>

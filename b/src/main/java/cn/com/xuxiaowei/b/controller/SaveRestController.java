@@ -2,6 +2,7 @@ package cn.com.xuxiaowei.b.controller;
 
 import cn.com.xuxiaowei.b.dto.SaveDTO;
 import cn.com.xuxiaowei.b.entity.B;
+import cn.com.xuxiaowei.b.hystrix.CHystrixService;
 import cn.com.xuxiaowei.b.service.IBService;
 import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +26,17 @@ public class SaveRestController {
 
     private IBService bService;
 
+//    private CHystrixService cHystrixService;
+
     @Autowired
     public void setbService(IBService bService) {
         this.bService = bService;
     }
+
+//    @Autowired
+//    public void setcHystrixService(CHystrixService cHystrixService) {
+//        this.cHystrixService = cHystrixService;
+//    }
 
     @RequestMapping("/save")
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
@@ -41,6 +49,9 @@ public class SaveRestController {
         b.setNum(10 / saveDTO.getBNum());
         b.setRemark(saveDTO.getB());
         bService.save(b);
+
+//        Map<String, Object> cSave = cHystrixService.save(saveDTO);
+//        map.put("cSave", cSave);
 
         map.put("save", b);
 

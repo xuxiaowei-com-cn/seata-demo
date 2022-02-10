@@ -162,3 +162,16 @@ logging:
   pattern:
     # 压缩文件命名
     rolling-file-name: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log.gz"
+
+---
+
+# spring配置
+spring:
+  # 日志治理
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+  sleuth:
+    # 与采样相关的属性。
+    sampler:
+      # 应该采样的请求的概率。 例如，应该对 1.0 - 100% 的请求进行抽样。 精度仅为整数（即不支持 0.1% 的迹线）
+      probability: 1.0
